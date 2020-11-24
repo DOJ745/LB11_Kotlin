@@ -311,4 +311,26 @@ fun main(args: Array<String>) {
         println("Destruct - $elem1 , $elem2")
 
         // C
+
+    val studentMarks = mutableMapOf(Pair("Ivanov", 18), Pair("Kuznecov", 40), Pair("Mihalkov", 25))
+    studentMarks += "Svetlov" to 36
+    studentMarks += "Klimchuk" to 25
+
+    fun convertAnswers(answers: Int): Int{
+        var result: Int = 0
+        when(answers){
+            36 -> result = 7
+            40 -> result = 10
+            25 -> result = 4
+            18 -> result = 1
+        }
+        return result
+    }
+    val changedStudentMarks = studentMarks.mapValues{convertAnswers(it.value)}
+    var sortedMarks = mutableListOf<Int>()
+    for (elem in changedStudentMarks.values){
+        sortedMarks.add(elem)
+        if (elem == 1) println("Not passed(index) - " + sortedMarks.indexOf(elem))
+    }
+    println(sortedMarks.groupBy { it })
 }
