@@ -156,6 +156,33 @@ fun main(args: Array<String>) {
     println("Operation result - $operationResult")
 
         // E
+
+    fun IntArray.indexOfMax(): Int?{
+        var maxInd: Int = 0
+        var maxElem: Int = 0
+        var count: Int = 0
+        if(this.isEmpty())
+            return null
+
+        for(elem in this){
+            if (elem > this[maxInd])
+                maxInd = this.indexOf(elem)
+                maxElem = elem
+        }
+
+        for(elem in this){
+            if(elem == maxElem)
+            count++
+        }
+        if(count >= 2){
+            return null
+        }
+        return maxInd
+    }
+
+    val testArr: IntArray = intArrayOf(1, 2, 5, 7, 10, 8, 550)
+    print("Index of max - " + testArr.indexOfMax())
+
         // F
 
     // Task 4
