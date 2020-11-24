@@ -137,6 +137,24 @@ fun main(args: Array<String>) {
     val testDate = isHoliday("25.12.2020")
 
         // D
+
+    fun doOperation(a: Int, b: Int, operation: Char): Double {
+        var result: Double = 0.0
+        var a = a.toDouble()
+        var b = b.toDouble()
+        when(operation){
+            '+' -> result = a + b
+            '-' -> result = a - b
+            '/' -> result = a / b
+            '*' -> result = a * b
+            '%' -> result = a % b
+            else -> println("Wrong operation!")
+        }
+        return result
+    }
+    val operationResult = doOperation(15, 24, '/')
+    println("Operation result - $operationResult")
+
         // E
         // F
 
