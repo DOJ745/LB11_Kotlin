@@ -2,6 +2,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.sqrt
 
 // Task 1
@@ -15,6 +16,8 @@ enum class Holidays(val Date: String){
     VictoryDay("09.05"),
     NewYear("01.01")
 }
+
+val destructData = listOf("elem15", "elem28", "elem31", "elem42")
 
 fun main(args: Array<String>) {
 
@@ -229,6 +232,14 @@ fun main(args: Array<String>) {
         return true
     }
 
+    fun isPrime(number: Int): Boolean{
+        if (number < 2) return false
+        for (i in 2..number - 1) {
+            if (number % i == 0) return false
+        }
+        return true
+    }
+
     fun addElement(arr: IntArray, element: Int): IntArray {
         val mutableArray = arr.toMutableList()
         mutableArray.add(element)
@@ -268,6 +279,36 @@ fun main(args: Array<String>) {
     // Task 5
 
         // A
+
+    //fun containsIn(collection: Collection<Int>): Boolean = collection.any { it == 5 }
+    val containsIn = { collection: Collection<Int> -> collection.any {conditionNumber: Int -> conditionNumber == 5}  }
+    val printResult = {message: String -> println(message)}
+    var intCollection: ArrayList<Int> = arrayListOf(1, 4, 5, 8)
+    if(containsIn(intCollection)) printResult("It contains 5")
+
         // B
+
+    fun isNotOdd(number: Int): Boolean{
+        return !(number % 2 == 0)
+    }
+
+    val randomNumbers = listOf(1, 2, 3, 4, 5, 6, 6)
+    println(randomNumbers.filter(::isPrime))
+    println("Not odds: " + randomNumbers.filter(::isNotOdd))
+    for (i in randomNumbers.filter(::isNotOdd)){
+        println("Not odds with for - $i")
+    }
+
+    val uniqueNumbersRand = randomNumbers.distinct()
+    println(uniqueNumbersRand)
+
+    println("Find - " + randomNumbers.find { it > 3 })
+    println("Group by - " + randomNumbers.groupBy { it })
+    println("All - " + randomNumbers.all { it > 3 })
+
+
+    val (elem1, elem2) = destructData
+        println("Destruct - $elem1 , $elem2")
+
         // C
 }
