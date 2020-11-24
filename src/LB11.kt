@@ -1,7 +1,19 @@
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
+import java.util.*
+
 // Task 1
 
-        // D
+        // D (Task 1)
 const val RANDOM_CONST:Int = 42
+
+        // C (Task 3)
+enum class Holidays(val Date: String){
+    Christmas("25.12"),
+    VictoryDay("09.05"),
+    NewYear("01.01")
+}
 
 fun main(args: Array<String>) {
 
@@ -64,9 +76,9 @@ fun main(args: Array<String>) {
 
         // B
 
-    println("Input email: ")
+    /*println("Enter email: ")
     val emailIn: String = readLine()!!
-    println("Input password: ")
+    println("Enter password: ")
     val passwordIn: String = readLine()!!
 
     fun isValid(email: String , password: String): Boolean {
@@ -86,9 +98,44 @@ fun main(args: Array<String>) {
     if (isValid(emailIn, passwordIn))
         println("Success registration!")
     else
-        println("Failed registration!")
+        println("Failed registration!")*/
 
         // C
+
+    fun isHoliday(date: String?): Boolean{
+        var checkDate: Boolean = false
+        var formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        var dateObj: LocalDate? = null
+
+        try{
+            dateObj = LocalDate.parse(date, formatter)
+            when {
+                date.equals(null) -> {
+                    print("Null catched!")
+                }
+                else -> {
+                    var formattedDate = date!!.format(formatter)
+                    var dayMonth = formattedDate.substring(0, 5)
+                    when(dayMonth){
+                        Holidays.Christmas.Date -> { println("It's holiday!")
+                            checkDate = true }
+                        Holidays.VictoryDay.Date -> { println("It's holiday!")
+                            checkDate = true }
+                        Holidays.NewYear.Date -> { println("It's holiday!")
+                            checkDate = true }
+                        else -> println("It's working day")
+                    }
+                }
+            }
+        }
+        catch (e: DateTimeParseException){
+            print("Wrong format!")
+        }
+        return checkDate
+    }
+
+    val testDate = isHoliday("25.12.2020")
+
         // D
         // E
         // F
