@@ -180,10 +180,22 @@ fun main(args: Array<String>) {
         return maxInd
     }
 
-    val testArr: IntArray = intArrayOf(1, 2, 5, 7, 10, 8, 550)
-    print("Index of max - " + testArr.indexOfMax())
+    val testArr: IntArray = intArrayOf(1, 2, 5, 7, 10, 8, 10)
+    println("Index of max - " + testArr.indexOfMax())
 
         // F
+
+    fun String.coincidence(symbol: Char): Int{
+        val regSymbol = Regex(pattern = "[$symbol+]").findAll(this)
+        var result = 0
+        for(matchedSymbol in regSymbol){
+            result++
+        }
+        return result
+    }
+
+    val testStr = "asdbbbaaaa"
+    println("Matches of symbol a - " + testStr.coincidence('a'))
 
     // Task 4
 
