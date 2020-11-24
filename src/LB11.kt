@@ -2,6 +2,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 import java.util.*
+import kotlin.math.sqrt
 
 // Task 1
 
@@ -219,6 +220,50 @@ fun main(args: Array<String>) {
     println("Factorial var 2 - " + factorialInd(5))
 
         // B
+
+    fun Int.isPrime(): Boolean{
+        if (this < 2) return false
+        for (i in 2..this - 1) {
+            if (this % i == 0) return false
+        }
+        return true
+    }
+
+    fun addElement(arr: IntArray, element: Int): IntArray {
+        val mutableArray = arr.toMutableList()
+        mutableArray.add(element)
+        return mutableArray.toIntArray()
+    }
+
+
+    fun primeNumbers(number: Int): IntArray{
+        var tempArr = intArrayOf()
+        var testNumber: Int = number
+        for(i in 1 until number){
+            if(i.isPrime()){
+                tempArr = addElement(tempArr, i)
+                println("Prime number = $i")
+            }
+        }
+        return tempArr
+    }
+
+    val primeArr = primeNumbers(10000)
+    var simpleList: ArrayList<Int> = arrayListOf()
+    var simpleArr: IntArray = intArrayOf()
+
+    println("Simple LIST:")
+    for(i in 0..20){
+        simpleList.add(primeArr[i])
+        println(simpleList.get(i))
+    }
+
+    println("Simple ARRAY:")
+    for(i in 20..30)
+    {
+        simpleArr = addElement(simpleArr, primeArr[i])
+    }
+    for(i in 0..simpleArr.lastIndex) println("Arr number - " + simpleArr[i])
 
     // Task 5
 
