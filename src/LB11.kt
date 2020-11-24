@@ -200,6 +200,24 @@ fun main(args: Array<String>) {
     // Task 4
 
         // A
+
+    fun factorialFor(n: Int): Double{
+        var result = 1.0
+        var i = n
+        while(i > 0)
+        {
+            result *= i
+            i--
+        }
+        return result
+    }
+
+    println("Factorial var 1 - " + factorialFor(5))
+
+    fun factorialInd(n: Int): Double = if (n < 2) 1.0 else n * factorialInd(n - 1)
+
+    println("Factorial var 2 - " + factorialInd(5))
+
         // B
 
     // Task 5
@@ -207,5 +225,4 @@ fun main(args: Array<String>) {
         // A
         // B
         // C
-
 }
